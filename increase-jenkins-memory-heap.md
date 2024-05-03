@@ -5,9 +5,10 @@ To add more Java heap space for Jenkins, you can modify the `JAVA_OPTS` environm
 ## Debian System
 
 1. Open the Jenkins systemd service file for editing:
-   ```bash
-   sudo vi /lib/systemd/system/jenkins.service
-   ```
+```bash
+sudo vi /lib/systemd/system/jenkins.service
+```
+
 2. Add the following lines to the file:
 
 ```bash
@@ -15,11 +16,14 @@ To add more Java heap space for Jenkins, you can modify the `JAVA_OPTS` environm
 Environment="JAVA_OPTS=-Djava.awt.headless=true -Xmx2g"  # Adjust the heap size (e.g., -Xmx2g for 2 GB)
 ```
 Replace *`-Xmx2g`* with the desired heap size. For example, if you want to allocate 4 GB of heap space, you can use *`-Xmx4g`*.
+
 3. Save the file and exit the editor.
+
 4. Reload the systemd configuration to apply the changes:
 ```bash
 sudo systemctl daemon-reload
 ```
+
 5. Restart the Jenkins service for the changes to take effect:
 ```bash
 sudo systemctl restart jenkins
